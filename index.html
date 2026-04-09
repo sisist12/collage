@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CollagePro - Multi-Photo Editor & Cropper</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-layer-group"></i>
+                <span>CollagePro</span>
+            </div>
+            
+            <div class="control-group">
+                <label>Canvas Ratio</label>
+                <div class="ratio-toggle">
+                    <button id="btn-16-9" class="active" data-ratio="1.777">16:9</button>
+                    <button id="btn-9-16" data-ratio="0.562">9:16</button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label>Add Elements</label>
+                <button class="btn-primary" onclick="document.getElementById('file-input').click()">
+                    <i class="fa-solid fa-plus"></i> Upload Photo
+                </button>
+                <input type="file" id="file-input" accept="image/*" hidden multiple>
+            </div>
+
+            <div class="control-group">
+                <label>Actions</label>
+                <button class="btn-secondary" id="btn-clear">
+                    <i class="fa-solid fa-trash-can"></i> Clear All
+                </button>
+                <button class="btn-success" id="btn-save">
+                    <i class="fa-solid fa-download"></i> Save Final Image
+                </button>
+            </div>
+
+            <div class="instructions">
+                <p><i class="fa-solid fa-circle-info"></i> Select an image on canvas to resize or move it.</p>
+            </div>
+        </aside>
+
+        <main class="editor-main">
+            <div class="canvas-wrapper" id="canvas-container">
+                <canvas id="main-canvas"></canvas>
+            </div>
+        </main>
+    </div>
+
+    <!-- Crop Modal -->
+    <div id="crop-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Crop Image</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="crop-area">
+                <img id="crop-image-preview" src="" alt="To crop">
+            </div>
+            <div class="modal-footer">
+                <button id="btn-cancel-crop" class="btn-secondary">Cancel</button>
+                <button id="btn-confirm-crop" class="btn-primary">Add to Collage</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
